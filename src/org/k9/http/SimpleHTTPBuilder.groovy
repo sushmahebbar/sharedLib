@@ -1,13 +1,13 @@
 package org.k9.http
 
 @Grab('io.github.http-builder-ng:http-builder-ng-core:1.0.3')
-@Grab('org.jsoup:jsoup:1.9.2')
+// @Grab('org.jsoup:jsoup:1.9.2')
 
 import static groovyx.net.http.HttpBuilder.configure
 import static groovyx.net.http.ContentTypes.JSON
 import groovyx.net.http.*
 import static groovy.json.JsonOutput.prettyPrint
-import org.jsoup.nodes.Document
+// import org.jsoup.nodes.Document
 
 class SimpleHTTPBuilder implements Serializable  {
     def config

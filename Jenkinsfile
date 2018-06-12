@@ -1,4 +1,4 @@
-@Library('aliasname@master') _
+@Library('test@master') _
         
 import org.k9.*
 
@@ -13,20 +13,19 @@ pipeline {
                                     "jsonBody": [
                                         "imageId": "ami-f2d3638a",
                                         "instanceType": "t2.micro",
-                                        "launchConfigurationName" "testLibLC"
+                                        "launchConfigurationName": "testLibLC"
                                         "securityGroups": ["sg-879965f8"],
                                         "userData": "https://s3-us-west-2.amazonaws.com/hudsonbay-test/dev/scripts/scriptViaGroovy.sh",
                                         "keyName": "HudsonBay-V",
                                         "iamInstanceProfile": "ec2-s3-RO-role"
-                                    ]
+                                    ],
                                     httpParams: [
                                         url: "http://localhost:4321",
                                         path: "/v1/launchconfig",
-                                        method: "POST".
+                                        method: "POST"
                                     ]
                                 ]
                             ]
-]
                       
                     def httpObj = new http.SimpleHTTPBuilder(this,params.launchconfig)
                     httpObj.sendRequest()
