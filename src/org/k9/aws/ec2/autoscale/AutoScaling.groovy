@@ -21,3 +21,4 @@ class AutoScaling implements Serializable {
       
 
  }
+}
