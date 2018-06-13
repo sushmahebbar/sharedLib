@@ -18,4 +18,15 @@ class LoadBalancer implements Serializable {
         elbOut.sendRequest()
         
 }
+def createELBListener() {
+    def listenerOut = new http.SimpleHTTPBuilder(this.script,this.config.elbListener)
+    listenerOut.sendRequest()  
+}
+ def createTargetGroup() {
+        
+        def tgOut = new http.SimpleHTTPBuilder(this.script,this.config.targetGroup)
+        tgOut.sendRequest()
+        
+       
+}
 }
