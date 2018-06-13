@@ -25,3 +25,4 @@ def deploy() {
      def elb = new LoadBalancer(this.script, this.config)
      def createStatus = utils.createAWSResources(asg, elb)
 }
+}

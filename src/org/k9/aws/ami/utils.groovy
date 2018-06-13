@@ -8,14 +8,13 @@ class Utils implements Serializable {
     def script
     def output
 
-    Utils(script, config, output) {
+    Utils(script, config) {
         this.script = script
         this.config = config
-        this.output = output
     }
 def createAWSResources(def asg, def elb){
        
-            def lcOut = asg.createLaunchConfig(this.output)
+            def lcOut = asg.createLaunchConfig()
             this.script.echo "====== ${lcOut} "
             if (lcOut['response'] == "success"){
                 this.script.echo "LC :: ${this.output}"
@@ -33,7 +32,7 @@ def createAWSResources(def asg, def elb){
             //     status = [response: "error", msg: "TG error!!"]
             //     return
             // }
-            def elbOut = elb.createLoadbalancer(this.output)
+            def elbOut = elb.createLoadbalancer()
             this.script.echo "====== ${elbOut} "
             if (elbOut['response'] == "success"){
                 //copyMapData(elbOut)
