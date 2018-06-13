@@ -18,7 +18,7 @@ class AutoScaling implements Serializable {
         //this.config.launchConf['httpParams'] = this.script.awsVars.lcHttpParams
 
         def lcOut = new http.SimpleHTTPBuilder(this.script,this.config.launchConf)
-        lcout.sendRequest()
+        lcOut.sendRequest()
  
       
 
