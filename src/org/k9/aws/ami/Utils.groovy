@@ -24,15 +24,15 @@ def createAWSResources(def asg, def elb){
                 return
             }
 
-            // def tgOut = elb.createTargetGroup(this.output)
-            // this.script.echo "====== ${tgOut} "
-            // if (tgOut['response'] == "success"
-            //     this.script.echo "TG :: ${this.output}" 
-            // }else{
-            //     this.script.echo "TG error!!"
-            //     status = [response: "error", msg: "TG error!!"]
-            //     return
-            // }
+            def tgOut = elb.createTargetGroup()
+            this.script.echo "====== ${tgOut} "
+             if (tgOut['response'] == "success"{
+            this.script.echo "TG :: ${this.output}" 
+            }else{
+                this.script.echo "TG error!!"
+                status = [response: "error", msg: "TG error!!"]
+                return
+            }
             def elbOut = elb.createLoadbalancer()
             this.script.echo "====== ${elbOut} "
             if (elbOut['response'] == "success"){
