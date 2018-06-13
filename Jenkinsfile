@@ -13,7 +13,7 @@ pipeline {
                                     "jsonBody": [
                                         "imageId": "ami-f2d3638a",
                                         "instanceType": "t2.micro",
-                                        //"launchConfigurationName": "http.buildNo",
+                                        "launchConfigurationName": "http.buildNo",
                                         "securityGroups": ["sg-879965f8"],
                                         "userData": "https://s3-us-west-2.amazonaws.com/hudsonbay-test/aws/dev/script/blue-green/R1/scriptViaGroovy.sh",
                                         "keyName": "HudsonBay-V",

@@ -13,7 +13,7 @@ class AutoScaling implements Serializable {
     }
  
  def createLaunchConfig() {
-       this.config.launchconfig.jsonBody['launchConfigurationName'] = "Lc"+env.BUILD_NUMBER
+      // this.config.launchconfig.jsonBody['launchConfigurationName'] = "Lc"+env.BUILD_NUMBER
       // this.config.launchConfig.jsonBody['userData'] = "https://s3-us-west-2.amazonaws.com/${output.global['userDataScript']}/scriptViaGroovy.sh"
         //this.config.launchConf['httpParams'] = this.script.awsVars.lcHttpParams
 
