@@ -13,9 +13,9 @@ pipeline {
                                     "jsonBody": [
                                         "imageId": "ami-f2d3638a",
                                         "instanceType": "t2.micro",
-                                        "launchConfigurationName": "http.buildNo"
+                                        //"launchConfigurationName": "http.buildNo",
                                         "securityGroups": ["sg-879965f8"],
-                                        "userData": "https://s3-us-west-2.amazonaws.com/hudsonbay-test/aws/dev/script/blue-green/R1/scriptViaGroovy.sh"
+                                        "userData": "https://s3-us-west-2.amazonaws.com/hudsonbay-test/aws/dev/script/blue-green/R1/scriptViaGroovy.sh",
                                         "keyName": "HudsonBay-V",
                                         "iamInstanceProfile": "ec2-s3-RO-role"
                                     ],
@@ -24,7 +24,7 @@ pipeline {
                                         path: "/v1/launchconfig",
                                         method: "POST"
                                     ]
-                                ]
+                                ],
                                 targetgroup: [
                                     jsonBody: [
                                          "name": "testTG",
@@ -39,12 +39,14 @@ pipeline {
                                     ]
                                 ]
                             ]
-                      
+                
+                    params.launchconfig.jsonBody["launchConfigurationName"]="Lc"+env.BUILD_NUMBER
                     def httpObj = new http.SimpleHTTPBuilder(this,params.launchconfig)
                     def httpObj2 =new http.SimpleHttpBuilder(this,params.targetgroup)
                     httpObj.initialconfig()
 
                     httpObj.sendRequest()
+                    httpObj2.sendRequest()
 
                 }
             }
