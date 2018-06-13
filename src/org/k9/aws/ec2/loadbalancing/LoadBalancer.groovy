@@ -15,9 +15,5 @@ class LoadBalancer implements Serializable {
         //this.config.elb['httpParams'] = this.script.awsVars.elbHttpParams
 
         def elbOut = new http.SimpleHTTPBuilder(this.script,this.config.elb).sendRequest()
-        if (elbOut['response'] == "error") {
-            funcOutput['response'] = "error"
-            return funcOutput
-        }
- }
+        
 }
