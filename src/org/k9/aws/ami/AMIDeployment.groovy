@@ -9,12 +9,12 @@ import org.k9.aws.ec2.loadbalancing.LoadBalancer
 class AMIDeployment implements Serializable {
     def config
     def script
-    def output
+   // def output
 
     AMIDeployment(script, config) {
         this.script = script
         this.config = config
-        this.output = [:]
+       // this.output = [:]
     }
 
     // def CreateLaunchconfig(){
@@ -22,8 +22,9 @@ class AMIDeployment implements Serializable {
     // httpObj.sendRequest()
     // }
 def deploy() {
+    Utils = new aws.ami.utils(this.script,this.config, this.output)
      def asg = new AutoScaling(this.script, this.config)
      def elb = new LoadBalancer(this.script, this.config)
-     def createStatus = utils.createAWSResources(asg, elb)
+     def createStatus = Utils.createAWSResources(asg, elb)
 }
 }
