@@ -17,7 +17,7 @@ class AutoScaling implements Serializable {
       // this.config.launchConfig.jsonBody['userData'] = "https://s3-us-west-2.amazonaws.com/${output.global['userDataScript']}/scriptViaGroovy.sh"
         //this.config.launchConf['httpParams'] = this.script.awsVars.lcHttpParams
 
-        def lcOut = new http.SimpleHTTPBuilder(this.script,this.config.launchConfig)
+        def lcOut = new http.SimpleHTTPBuilder(this.script,this.config.launchconfig)
         lcOut.sendRequest()
  
       
