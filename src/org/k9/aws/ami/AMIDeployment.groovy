@@ -4,6 +4,7 @@ import groovy.time.*
 import java.text.*
 import org.k9.*
 import org.k9.aws.ec2.autoscale.AutoScaling
+import org.k9.aws.ec2.loadbalancing.LoadBalancer
 
 class AMIDeployment implements Serializable {
     def config

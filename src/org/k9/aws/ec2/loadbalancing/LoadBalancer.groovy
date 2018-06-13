@@ -11,7 +11,7 @@ class LoadBalancer implements Serializable {
     }
  def createLoadbalancer() {
 
-       // this.config.elb['jsonBody']['name'] = "${this.config.deploymentName}-${this.config.subEnv}-elb-${output.dbData.version}-${output.dbData.buildNo}"
+       this.config.elb['jsonBody']['name'] = "${this.config.deploymentName}-${this.config.subEnv}-elb-${output.dbData.version}-${output.dbData.buildNo}"
         //this.config.elb['httpParams'] = this.script.awsVars.elbHttpParams
 
         def elbOut = new http.SimpleHTTPBuilder(this.script,this.config.elb)
