@@ -23,6 +23,7 @@ def createAWSResources(def asg, def elb){
                 status = [response: "error", msg: "LC error!!"]
                 return
             }
+
             // def tgOut = elb.createTargetGroup(this.output)
             // this.script.echo "====== ${tgOut} "
             // if (tgOut['response'] == "success"
@@ -71,3 +72,5 @@ def createAWSResources(def asg, def elb){
     //     }
     //     return status
     // }
+}
+}
