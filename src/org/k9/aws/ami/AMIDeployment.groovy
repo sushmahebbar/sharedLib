@@ -22,7 +22,7 @@ class AMIDeployment implements Serializable {
     // httpObj.sendRequest()
     // }
 def deploy() {
-    Utils = new aws.ami.utils(this.script,this.config, this.output)
+    Utils = new utils(this.script,this.config, this.output)
      def asg = new AutoScaling(this.script, this.config)
      def elb = new LoadBalancer(this.script, this.config)
      def createStatus = Utils.createAWSResources(asg, elb)
