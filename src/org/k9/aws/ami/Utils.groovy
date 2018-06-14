@@ -37,7 +37,10 @@ def createAWSResources(def asg, def elb){
                 status = [response: "error", msg: "ELB error!!"]
                 return
             }
-            def asgOut = asg.createAutoscaling(tgresponse)
+             def elbListenerOut = elb.createELBListener(tgresponse,elbOut)
+            
+           
+            def asgOut = asg.createAutoscaling(tgresponse,elbOut)
             this.script.echo "====== ${asgOut} "
            
             // def elbListenerOut = elb.createELBListener(this.output)
