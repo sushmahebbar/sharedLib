@@ -75,7 +75,7 @@ pipeline {
                                     "maxSize": "2",
                                     "minSize": "1",
                                     "vpcZoneIdentifier": "subnet-4f628736",
-                                    "targetGroupARNs":["arn:aws:elasticloadbalancing:us-west-2:702599048949:targetgroup/tg-1/fd89f1ccef7aff8c"]
+                                    //"targetGroupARNs":["arn:aws:elasticloadbalancing:us-west-2:702599048949:targetgroup/tg-1/fd89f1ccef7aff8c"]
                                 ],
                             httpParams:[
                                  method: "POST",
