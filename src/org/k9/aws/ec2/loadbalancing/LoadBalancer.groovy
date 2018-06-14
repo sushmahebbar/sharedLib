@@ -24,7 +24,7 @@ def createELBListener() {
 }
  def createTargetGroup() {
         
-        def tgOut = new http.SimpleHTTPBuilder(this.script,this.config.targetGroup)
+        def tgOut = new http.SimpleHTTPBuilder(this.script,this.config.targetgroup)
         tgOut.sendRequest()
         
        
