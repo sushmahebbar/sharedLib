@@ -22,14 +22,13 @@ def createELBListener() {
     def listenerOut = new http.SimpleHTTPBuilder(this.script,this.config.elbListener)
     listenerOut.sendRequest()  
 }
- def createTargetGroup(def output) {
-         def funcOutput = [:]
+ def createTargetGroup() {
         
         def tgOut = new http.SimpleHTTPBuilder(this.script,this.config.targetgroup)
-        tgOut.sendRequest()
+        def out=tgOut.sendRequest()
+        this.script.echo " targrt group:${out}"
         
-        funcOutput['global'] =  ['tgARN' : tgOut['tgARN']]
-        return funcOutput
+        return out['tgARN']
        
 }
 }
