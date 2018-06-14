@@ -25,7 +25,7 @@ def createAWSResources(def asg, def elb){
             }
 
             def tgresponse = elb.createTargetGroup()
-            this.script.echo "====== ${tgARN} "
+            //this.script.echo "====== ${tgARN} "
             
             def elbOut = elb.createLoadbalancer()
             this.script.echo "====== ${elbOut} "
