@@ -26,13 +26,7 @@ def createAWSResources(def asg, def elb){
 
             def tgOut = elb.createTargetGroup()
             this.script.echo "====== ${tgOut} "
-             if (tgOut['response'] == "success"{
-            this.script.echo "TG :: ${this.output}" 
-            }else{
-                this.script.echo "TG error!!"
-                status = [response: "error", msg: "TG error!!"]
-                return
-            }
+            
             def elbOut = elb.createLoadbalancer()
             this.script.echo "====== ${elbOut} "
             if (elbOut['response'] == "success"){
