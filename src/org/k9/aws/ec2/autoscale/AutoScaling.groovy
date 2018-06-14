@@ -19,8 +19,11 @@ class AutoScaling implements Serializable {
 
         def lcOut = new http.SimpleHTTPBuilder(this.script,this.config.launchconfig)
         lcOut.sendRequest()
- 
-      
-
  }
+ def createAutoscaling() {
+     def asgOut = new http.SimpleHTTPBuilder(this.script,this.config.asg)
+     asgOut.sendRequest()
+        
+ }
+
 }
