@@ -20,8 +20,9 @@ class AutoScaling implements Serializable {
         def lcOut = new http.SimpleHTTPBuilder(this.script,this.config.launchconfig)
         lcOut.sendRequest()
  }
- def createAutoscaling() {
-      this.config.asg['jsonBody']['targetGroupARNs'] = $'tgARN'
+ def createAutoscaling(def output) {
+    
+         this.config.asg['jsonBody']['targetGroupARNs'] = [ output.global['tgARN'] ]
         
      def asgOut = new http.SimpleHTTPBuilder(this.script,this.config.asg)
      asgOut.sendRequest()

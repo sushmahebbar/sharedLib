@@ -23,10 +23,16 @@ def createELBListener() {
     listenerOut.sendRequest()  
 }
  def createTargetGroup() {
+         def funcOutput = [:]
         
         def tgOut = new http.SimpleHTTPBuilder(this.script,this.config.targetgroup)
         tgOut.sendRequest()
+         if (tgOut['response'] == "error") {
+            funcOutput['response'] = "error"
+        }
         
+        funcOutput['response'] = "success"
+        funcOutput['global'] =  ['tgARN' : tgOut['tgARN']]
        
 }
 }
