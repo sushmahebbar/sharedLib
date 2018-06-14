@@ -24,7 +24,7 @@ def createAWSResources(def asg, def elb){
                 return
             }
 
-            def tgARN = elb.createTargetGroup()
+            def tgARN1 = elb.createTargetGroup()
             this.script.echo "====== ${tgARN} "
             
             def elbOut = elb.createLoadbalancer()
@@ -37,7 +37,7 @@ def createAWSResources(def asg, def elb){
                 status = [response: "error", msg: "ELB error!!"]
                 return
             }
-            def asgOut = asg.createAutoscaling(def tgARN)
+            def asgOut = asg.createAutoscaling(def tgARN1)
             this.script.echo "====== ${asgOut} "
            
             // def elbListenerOut = elb.createELBListener(this.output)
