@@ -29,23 +29,25 @@ def createAWSResources(def asg, def elb){
             
             def elbOut = elb.createLoadbalancer()
             this.script.echo "====== ${elbOut} "
-            if (elbOut['response'] == "success"){
-                //copyMapData(elbOut)
-                this.script.echo "ELB created"
-            }else{
-                this.script.echo "ELB error!!"
-                status = [response: "error", msg: "ELB error!!"]
-                return
-            }
-             def elbListenerOut = elb.createELBListener(tgresponse,elbOut)
-            if (elbListenerOut['response']=="success"){
-                this.script.echo "elb listener created"
-            }else {
-                this.script.echo "elb listener error"
-            }
-           
+            // if (elbOut['response'] == "success"){
+            //     //copyMapData(elbOut)
+            //     this.script.echo "ELB created"
+            // }else{
+            //     this.script.echo "ELB error!!"
+            //     status = [response: "error", msg: "ELB error!!"]
+            //     return
+            // }
             def asgOut = asg.createAutoscaling(tgresponse)
             this.script.echo "====== ${asgOut} "
+           
+         def elbListenerOut = elb.createELBListener(tgresponse,elbOut)
+         this.script.echo " elb listener"
+            // if (elbListenerOut['response']=="success"){
+            //     this.script.echo "elb listener created"
+            // }else {
+            //     this.script.echo "elb listener error"
+            // }
+           
            
             // def elbListenerOut = elb.createELBListener(this.output)
             // this.script.echo "====== ${elbListenerOut} "
