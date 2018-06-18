@@ -20,8 +20,8 @@ class LoadBalancer implements Serializable {
         
 }
 def createELBListener(def output,def arg) {
-     this.config.elbListener['jsonBody']['defaultActions'] = [output]
-     this.config.elbListener['jsonBody']['loadBalancerArn']=[arg]
+     this.config.elbListener['jsonBody']['defaultActions'] = [{output}]
+     this.config.elbListener['jsonBody']['loadBalancerArn']=arg
        
     def listenerOut = new http.SimpleHTTPBuilder(this.script,this.config.elbListener)
     listenerOut.sendRequest()  
