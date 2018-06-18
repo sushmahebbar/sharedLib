@@ -15,9 +15,9 @@ class Utils implements Serializable {
 def createAWSResources(def asg, def elb){
        
             def lcOut = asg.createLaunchConfig()
-            this.script.echo "====== ${lcOut} "
+            //this.script.echo "====== ${lcOut} "
             if (lcOut['response'] == "success"){
-                this.script.echo "LC :: ${this.output}"
+                this.script.echo "LC created :: ${lcOut}"
             }else{
                 this.script.echo "LC error!!"
                 status = [response: "error", msg: "LC error!!"]
@@ -31,16 +31,20 @@ def createAWSResources(def asg, def elb){
             this.script.echo "====== ${elbOut} "
             if (elbOut['response'] == "success"){
                 //copyMapData(elbOut)
-                this.script.echo "ELB :: ${this.output}"
+                this.script.echo "ELB created"
             }else{
                 this.script.echo "ELB error!!"
                 status = [response: "error", msg: "ELB error!!"]
                 return
             }
              def elbListenerOut = elb.createELBListener(tgresponse,elbOut)
-            
+            if (elbListenerOut['response']=="success"){
+                this.script.echo "elb listener created"
+            }else {
+                this.script.echo "elb listener error"
+            }
            
-            def asgOut = asg.createAutoscaling(tgresponse,elbOut)
+            def asgOut = asg.createAutoscaling(tgresponse)
             this.script.echo "====== ${asgOut} "
            
             // def elbListenerOut = elb.createELBListener(this.output)
