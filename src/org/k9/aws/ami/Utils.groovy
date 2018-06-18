@@ -41,7 +41,7 @@ def createAWSResources(def asg, def elb){
             this.script.echo "====== ${asgOut} "
            
          def elbListenerOut = elb.createELBListener(tgresponse,elbOut)
-         this.script.echo " elb listener"
+         this.script.echo " elb listener created"
             // if (elbListenerOut['response']=="success"){
             //     this.script.echo "elb listener created"
             // }else {
