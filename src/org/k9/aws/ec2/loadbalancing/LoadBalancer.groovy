@@ -25,7 +25,7 @@ def createTargetGroup() {
         def out=tgOut.sendRequest()
         this.script.echo " targrt group:${out}"
         
-        return out['tgARN']s
+        return out['tgARN']
        
 }
 def createELBListener(def output,def arg) {
