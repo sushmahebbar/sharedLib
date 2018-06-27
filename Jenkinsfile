@@ -9,6 +9,17 @@ pipeline {
             steps {
                 script {
                     def config = [
+                        scm: [
+                            code: [
+                                git: [
+                                    scm_url: "git@github.com:k-vishwa/code.git",
+                                    scm_branch: "master"
+                                ]
+                            ]
+                        ]
+                         s3 : [
+                            binaryBucket: "hudsonbay-test",
+                             ],
                             launchconfig: [
                                     "jsonBody": [
                                         "imageId": "ami-f2d3638a",

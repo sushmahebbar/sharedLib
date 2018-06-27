@@ -21,7 +21,16 @@ class AMIDeployment implements Serializable {
     // def httpObj = new http.SimpleHTTPBuilder(this.script,this.params.launchconfig)
     // httpObj.sendRequest()
     // }
+    def initialiseGlobalVars(){
+         this.output['global'] = [
+            'workSpace': "${this.script.env.WORKSPACE}",
+            'deploymentExists': false
+        ]
+
+        this.script.echo "After Init global var ${this.output}"
+    }
 def deploy() {
+    def fetchStatus = utils.fetchCode()
      def utilobj = new Utils(this.script,this.config)
      def asg = new AutoScaling(this.script, this.config)
      def elb = new LoadBalancer(this.script, this.config)
